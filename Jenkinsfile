@@ -81,13 +81,13 @@ pipeline {
                     }
         }
        
-        stages('email') {
-            stage('Invoking some other Jenkins job') {
-                steps {
-                    echo "Building my-other-job-name"
-                    build job: 'my-other-job-name', parameters: [string(name: 'OTHER_JOB_PARAM_KEY', value: "OTHER_JOB_PARAM_VALUE")]
-                }
+      
+        stage('Invoking some other Jenkins job') {
+            steps {
+                echo "Building my-other-job-name"
+                build job: 'my-other-job-name', parameters: [string(name: 'OTHER_JOB_PARAM_KEY', value: "OTHER_JOB_PARAM_VALUE")]
             }
         }
+    
     }
 }
