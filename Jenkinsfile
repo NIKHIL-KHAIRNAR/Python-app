@@ -80,14 +80,18 @@ pipeline {
                         }
                     }
         }
-       
-      
-        stage('Invoking some other Jenkins job') {
+        stage('Ok') {
             steps {
-                echo "Building my-other-job-name"
-                build job: 'my-other-job-name', parameters: [string(name: 'OTHER_JOB_PARAM_KEY', value: "OTHER_JOB_PARAM_VALUE")]
+                echo "Ok"
             }
         }
+
+  
     
+    }
+    post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
     }
 }
