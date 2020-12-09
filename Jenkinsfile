@@ -80,6 +80,7 @@ pipeline {
                         }
                     }
         }
+        agent any
         stage('Ok') {
             steps {
                 echo "Ok"
